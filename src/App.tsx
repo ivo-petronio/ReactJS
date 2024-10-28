@@ -7,6 +7,7 @@ interface AlunoProps {
 
 interface UserProps {
   name: string;
+  cargo: string;
 }
 
 function App() {
@@ -26,7 +27,10 @@ function App() {
 
     const [contador, setContador] = useState(0);
 
-    const [user, setUser] = useState<string | undefined>("visitante");
+    const [user, setUser] = useState<UserProps>({
+      name: "visitante",
+      cargo: ""
+    });
   
     return (
         <div className="container">
@@ -59,7 +63,9 @@ function App() {
             <button onClick={handleLogin}> ::Entrar:: </button>
             <button onClick={handleLogout}> xx Sair xx</button>
             <br />
-            <h3>Olá, {user} </h3>
+            <h3>Olá, {user.name} </h3>
+            <h5> {user.cargo} </h5>
+            
         </div>
     )
   
@@ -80,12 +86,18 @@ function App() {
     }
 
     function handleLogin() {
-      setUser(aluno?.name);
+      setUser({
+        name: aluno?.name,
+        cargo: "Web Developer"
+      })
     }
 
     function handleLogout() {
       alert("Até logo! Obrigado por usar nossos serviços.");
-      setUser("visitante")
+      setUser({
+        name: "visitante",
+        cargo: ""
+      })
     }
   }
 }
