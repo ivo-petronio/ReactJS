@@ -21,6 +21,8 @@ function App() {
     const [aluno, setAluno] = useState<AlunoProps>();
 
     const [contador, setContador] = useState(0);
+
+    const [user, setUser] = useState<string>("visitante");
   
     return (
         <div className="container">
@@ -47,6 +49,12 @@ function App() {
             <hr></hr>
             <h1> Contador com useState </h1>
             <button onClick={adicionar}> + </button> {contador} <button onClick={subtrair}> - </button>
+            <br />
+            <hr></hr>
+            <br />
+            <button onClick={handleLogin}> ::Entrar:: </button>
+            <br />
+            <h3>Olá, {user} </h3>
         </div>
     )
   
@@ -64,6 +72,10 @@ function App() {
     function subtrair() {
       if (contador === 0) return;
       else setContador(valorAtual => valorAtual - 1);
+    }
+
+    function handleLogin() {
+      setUser("Ivo Petrônio");
     }
   }
 }
