@@ -5,6 +5,10 @@ interface AlunoProps {
   age: number;
 }
 
+interface UserProps {
+  name: string;
+}
+
 function App() {
 
   return (
@@ -22,7 +26,7 @@ function App() {
 
     const [contador, setContador] = useState(0);
 
-    const [user, setUser] = useState<string>("visitante");
+    const [user, setUser] = useState<string | undefined>("visitante");
   
     return (
         <div className="container">
@@ -53,6 +57,7 @@ function App() {
             <hr></hr>
             <br />
             <button onClick={handleLogin}> ::Entrar:: </button>
+            <button onClick={handleLogout}> xx Sair xx</button>
             <br />
             <h3>Olá, {user} </h3>
         </div>
@@ -75,7 +80,12 @@ function App() {
     }
 
     function handleLogin() {
-      setUser("Ivo Petrônio");
+      setUser(aluno?.name);
+    }
+
+    function handleLogout() {
+      alert("Até logo! Obrigado por usar nossos serviços.");
+      setUser("visitante")
     }
   }
 }
